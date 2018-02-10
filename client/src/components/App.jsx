@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Header from './header/Header.jsx';
+import Footer from './footer/Footer.jsx';
 import './App.less';
+import './Reset.less';
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Hi React!</h1>
-                </header>
-                <p className="App-intro">
-                    Hello, world!
-                </p>
+            <div>
+                <Header/>
+                <Footer/>
             </div>
         );
     }
