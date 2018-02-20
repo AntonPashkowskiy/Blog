@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-const blogApplication = combineReducers({});
+const todoApplication = combineReducers({});
 
-export default blogApplication;
+export default todoApplication;
