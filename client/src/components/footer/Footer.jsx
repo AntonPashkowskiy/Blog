@@ -11,15 +11,15 @@ class Footer extends Component {
 
         return (
             <Paper zDepth={1}>
-                <BottomNavigation selectedIndex={0}>
+                <BottomNavigation selectedIndex={this.props.selectedSorterIndex}>
                     <BottomNavigationItem 
                         label="By Date"
                         icon={alarmIcon}
-                        onClick={() => console.log("By date sort")}/>
+                        onClick={() => this.props.onSortingTypeClick(0)}/>
                     <BottomNavigationItem 
                         label="By Priority"
                         icon={priorityIcon}
-                        onClick={() => console.log("By priority sort")}/>
+                        onClick={() => this.props.onSortingTypeClick(1)}/>
                 </BottomNavigation>
             </Paper>
         );
