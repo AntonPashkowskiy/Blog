@@ -12,9 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onVisibilityFilterClick: filterType => {
-            dispatch(changeVisibilityFilterAction(filterType));
-        }
+        onVisibilityFilterClick: filterType => dispatch(changeVisibilityFilterAction(filterType)),
+        onAddTodoItemClick: () => console.log("Show todo item dialog")
     };
 }
 

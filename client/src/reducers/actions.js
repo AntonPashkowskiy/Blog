@@ -32,3 +32,50 @@ export function changeVisibilityFilterAction(visibilityFilterType) {
         visibilityFilterType: visibilityFilterType
     };
 }
+
+/*
+    Todo list
+*/
+export const ADD_TODO_ITEM = "ADD_TODO_ITEM";
+export const UPDATE_TODO_ITEM = "UPDATE_TODO_ITEM";
+export const DELETE_TODO_ITEM = "DELETE_TODO_ITEM";
+export const TOGGLE_ITEM_STATUS = "TOGGLE_ITEM_STATUS";
+
+export const TodoItemPriority = {
+    Low: 1,
+    Medium: 2,
+    Hight: 3
+};
+
+export const TodoItemStatus = {
+    Active: 1,
+    Completed: 2
+};
+
+export function addTodoItemAction(todoItem) {
+    return {
+        type: ADD_TODO_ITEM,
+        item: todoItem
+    };
+}
+
+export function updateTodoItemAction(todoItem) {
+    return {
+        type: UPDATE_TODO_ITEM,
+        item: todoItem
+    };
+}
+
+export function deleteTodoItem(id) {
+    return {
+        type: DELETE_TODO_ITEM,
+        itemId: id
+    };
+}
+
+export function toggleItemStatus(id) {
+    return {
+        type: TOGGLE_ITEM_STATUS,
+        itemId: id
+    };
+}
