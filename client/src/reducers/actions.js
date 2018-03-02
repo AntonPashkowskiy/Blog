@@ -66,14 +66,14 @@ export function updateTodoItemAction(todoItem) {
     };
 }
 
-export function deleteTodoItem(id) {
+export function deleteTodoItemAction(id) {
     return {
         type: DELETE_TODO_ITEM,
         itemId: id
     };
 }
 
-export function toggleItemStatus(id) {
+export function toggleItemStatusAction(id) {
     return {
         type: TOGGLE_ITEM_STATUS,
         itemId: id

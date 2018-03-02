@@ -5,7 +5,7 @@ class TodoList extends Component {
     render() {
         return (
             <ul>
-                {this.props.todos.map(todo => (
+                {this.props.todoList.map(todo => (
                     <TodoListItem key={todo.id} {...todo}/>
                 ))}
             </ul>
