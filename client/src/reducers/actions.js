@@ -79,3 +79,21 @@ export function toggleItemStatusAction(id) {
         itemId: id
     };
 }
+
+/*
+    Add todo dialog
+*/
+export const OPEN_ADD_TODO_DIALOG = "OPEN_ADD_TODO_DIALOG";
+export const CLOSE_ADD_TODO_DIALOG = "CLOSE_ADD_TODO_DIALOG";
+
+export function openAddTodoDialogAction() {
+    return {
+        type: OPEN_ADD_TODO_DIALOG
+    };
+}
+
+export function closeAddTodoDialogAction() {
+    return {
+        type: CLOSE_ADD_TODO_DIALOG
+    };
+}

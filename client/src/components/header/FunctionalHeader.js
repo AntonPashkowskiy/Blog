@@ -1,6 +1,10 @@
 import Header from './Header.jsx';
 import { connect } from 'react-redux';
-import { VisibilityFilterType, changeVisibilityFilterAction } from '../../reducers/actions';
+import {
+    VisibilityFilterType,
+    changeVisibilityFilterAction,
+    openAddTodoDialogAction
+} from '../../reducers/actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -13,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onVisibilityFilterClick: filterType => dispatch(changeVisibilityFilterAction(filterType)),
-        onAddTodoItemClick: () => console.log("Show todo item dialog")
+        onAddTodoItemClick: () => dispatch(openAddTodoDialogAction())
     };
 }
 

@@ -12,13 +12,13 @@ export default function todoListReducer(state = [], action) {
         case ADD_TODO_ITEM:
             return [
                 ...state,
-                action.todoItem
+                action.item
             ];
 
         case UPDATE_TODO_ITEM:
             return state.map(todo => {
-                if (todo.id === action.todoItem.id) {
-                    return action.todoItem;
+                if (todo.id === action.item.id) {
+                    return action.item;
                 }
                 return todo;
             });

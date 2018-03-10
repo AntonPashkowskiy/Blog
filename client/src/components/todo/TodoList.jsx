@@ -1,14 +1,16 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import TodoListItem from './TodoListItem.jsx'
 
 class TodoList extends Component {
     render() {
         return (
-            <ul>
+            <div>
                 {this.props.todoList.map(todo => (
                     <TodoListItem key={todo.id} {...todo}/>
                 ))}
-            </ul>
+            </div>
         );
     }
 }
+
+export default TodoList;

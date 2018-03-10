@@ -18,17 +18,17 @@ const filterTodoItems = (todoItems, visibilityFilterType) => {
 
 const byDateSorter = (firstTodo, secondTodo) =>  {
     if (firstTodo.dueDate > secondTodo.dueDate) {
-        return -1;
+        return 1;
     }
 
     if (firstTodo.dueDate < secondTodo.dueDate) {
-        return 1;
+        return -1;
     }
     return 0;
 }
 
 const byPrioritySorter = (firstTodo, secondTodo) =>  {
-    return firstTodo.priority - secondTodo.priority;
+    return secondTodo.priority - firstTodo.priority;
 }
 
 const sortTodoItems = (todoItems, sortingType) => {
@@ -43,8 +43,11 @@ const sortTodoItems = (todoItems, sortingType) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    let filteredItems = filterTodoItems(state.todoList, state.visibilityFilterType);
+    let sortedItems = sortTodoItems(filteredItems, state.sortingType);
+
     return {
-        todoList: sortTodoItems(filterTodoItems(state.todoList))
+        todoList: sortedItems
     };
 }
 
