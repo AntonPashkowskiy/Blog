@@ -17,7 +17,10 @@ const mapStateToProps = (state, ownProps) => {
                 value: priorityEntry[1],
                 text: priorityEntry[0]
             };
-        })
+        }),
+        title: "",
+        dueDate: null,
+        priority: TodoItemPriority.Low
     };
 }
 

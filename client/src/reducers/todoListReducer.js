@@ -33,6 +33,7 @@ export default function todoListReducer(state = [], action) {
                         status: todo.status === TodoItemStatus.Active ? TodoItemStatus.Completed : TodoItemStatus.Active
                     })
                 }
+                return todo;
             });
     }
     return state;

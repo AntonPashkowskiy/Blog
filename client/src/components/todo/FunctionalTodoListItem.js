@@ -4,7 +4,7 @@ import { deleteTodoItemAction, toggleItemStatusAction } from '../../reducers/act
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onEditTodoItemClick: () => console.log("Open edit dialog"),
+        onEditTodoItemClick: todoItem => console.log(todoItem),
         onDeleteTodoItemClick: id => dispatch(deleteTodoItemAction(id)),
         onToggleStatusButtonClick: id => dispatch(toggleItemStatusAction(id))
     };
