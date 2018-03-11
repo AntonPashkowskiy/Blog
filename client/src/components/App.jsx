@@ -3,7 +3,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FunctionalHeader from './header/FunctionalHeader';
 import FunctionalTodoList from './todo/FunctionalTodoList';
 import FunctionalFooter from './footer/FunctionalFooter';
-import AddTodoDialog from './dialog/AddTodoDialog'
+import AddTodoDialog from './dialog/AddTodoDialog';
+import EditTodoDialog from './dialog/EditTodoDialog';
 import './App.less';
 import './Reset.less';
 
@@ -16,6 +17,7 @@ class App extends Component {
                     <FunctionalTodoList/>
                     <FunctionalFooter/>
                     <AddTodoDialog/>
+                    <EditTodoDialog/>
                 </div>
             </MuiThemeProvider>
         );

@@ -10,12 +10,13 @@ class TodoDialog extends Component {
     constructor(props) {
         super(props);
 
-        this.initialState = {
+        this.state = {
+            id: this.props.id,
             title: this.props.title,
             dueDate: this.props.dueDate,
-            priority: this.props.priority 
+            priority: this.props.priority,
+            status: this.props.status 
         };
-        this.state = Object.assign({}, this.initialState);
 
         this.handleTitleChange = (event) => {
             this.setState({
@@ -34,17 +35,17 @@ class TodoDialog extends Component {
                 priority: value
             });
         };
-
-        this.cancelHandler = () => {
-            this.props.onCancelDialog();
-            this.setState(this.initialState);
-        };
-
-        this.confirmHandler = () => {
-            this.props.onConfirmDialog(this.state);
-            this.setState(this.initialState);
-        };
     }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            id: nextProps.id,
+            title: nextProps.title,
+            dueDate: nextProps.dueDate,
+            priority: nextProps.priority,
+            status: nextProps.status 
+        });
+    };
 
     render() {
         const nowDate = new Date(Date.now());
@@ -52,12 +53,12 @@ class TodoDialog extends Component {
             <FlatButton 
                 label="Cancel"
                 primary={true}
-                onClick={this.cancelHandler}/>,
+                onClick={this.props.onCancelDialog}/>,
             <FlatButton
                 label={this.props.confirmButtonText}
                 primary={true}
                 keyboardFocused={true}
-                onClick={this.confirmHandler}/>
+                onClick={() => this.props.onConfirmDialog(this.state)}/>
         ];
 
         return (

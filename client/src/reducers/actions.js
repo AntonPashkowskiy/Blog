@@ -97,3 +97,22 @@ export function closeAddTodoDialogAction() {
         type: CLOSE_ADD_TODO_DIALOG
     };
 }
+
+/*
+    Edit todo dialog
+*/
+export const OPEN_EDIT_TODO_DIALOG = "OPEN_EDIT_TODO_DIALOG";
+export const CLOSE_EDIT_TODO_DIALOG = "CLOSE_EDIT_TODO_DIALOG";
+
+export function openEditTodoDialogAction(todoItemToEdit) {
+    return {
+        type: OPEN_EDIT_TODO_DIALOG,
+        itemToEdit: todoItemToEdit
+    };
+}
+
+export function closeEditTodoDialogAction() {
+    return {
+        type: CLOSE_EDIT_TODO_DIALOG
+    };
+}

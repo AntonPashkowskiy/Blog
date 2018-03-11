@@ -32,13 +32,11 @@ const getId = (min, max) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onCancelDialog: () => {
-            console.log("Cancel dialog");
             dispatch(closeAddTodoDialogAction());
         },
         onConfirmDialog: newTodoItem => {
             newTodoItem.id = getId(1, 10000);
             newTodoItem.status = TodoItemStatus.Active;
-            console.log(newTodoItem);
             dispatch(addTodoItemAction(newTodoItem));
             dispatch(closeAddTodoDialogAction());
         }
