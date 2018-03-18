@@ -5,6 +5,9 @@ import FunctionalTodoList from './todo/FunctionalTodoList';
 import FunctionalFooter from './footer/FunctionalFooter';
 import AddTodoDialog from './dialog/AddTodoDialog';
 import EditTodoDialog from './dialog/EditTodoDialog';
+import About from './about/About.jsx';
+import { Switch, Route } from 'react-router-dom';
+
 import './App.less';
 import './Reset.less';
 
@@ -14,7 +17,10 @@ class App extends Component {
             <MuiThemeProvider>
                 <div>
                     <FunctionalHeader/>
-                    <FunctionalTodoList/>
+                    <Switch>
+                        <Route exact path="/" component={FunctionalTodoList}/>
+                        <Route exact path="/about" component={About}/>
+                    </Switch>
                     <FunctionalFooter/>
                     <AddTodoDialog/>
                     <EditTodoDialog/>

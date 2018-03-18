@@ -6,15 +6,21 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import FontIcon from 'material-ui/FontIcon';
+import { withRouter } from "react-router-dom";
 import { VisibilityFilterType } from '../../reducers/actions';
 import './Header.less';
 
 class Header extends Component {
     render() {
-        let addNewTodoIcon = <FontIcon className="material-icons">add</FontIcon>;
-        let headerMenu = (
+        const addNewTodoIcon = <FontIcon className="material-icons">add</FontIcon>;
+        const iconButton = (
+            <IconButton>
+                <MoreVertIcon/>
+            </IconButton>
+        );
+        const headerMenu = (
             <IconMenu
-                iconButtonElement={<IconButton><MoreVertIcon/></IconButton>}
+                iconButtonElement={iconButton}
                 targetOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
                 <MenuItem primaryText="Add item"
@@ -33,11 +39,12 @@ class Header extends Component {
                           checked={this.props.showCompletedChecked}
                           onClick={() => this.props.onVisibilityFilterClick(VisibilityFilterType.ShowCompleted)}/>
                 <Divider/>
-                <MenuItem primaryText="About Us"/>
+                <MenuItem primaryText="About" onClick={() => this.props.history.push("/about")}/>
             </IconMenu>
         );
         return (
-            <AppBar 
+            <AppBar
+                onLeftIconButtonClick={() => this.props.history.push("/")} 
                 title="Just do it"
                 iconElementRight={headerMenu}>
             </AppBar>
@@ -45,4 +52,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
