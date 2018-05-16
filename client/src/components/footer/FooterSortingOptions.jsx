@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import FontIcon from 'material-ui/FontIcon';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 
-class FooterSortingOptions extends Component {
+export default class FooterSortingOptions extends Component {
     render() {
+        const { selectedSorterIndex, onSortingTypeClick } = this.props;
         const alarmIcon = <FontIcon className="material-icons">alarm</FontIcon>;
         const priorityIcon = <FontIcon className="material-icons">trending_up</FontIcon>;
 
         return (
-            <BottomNavigation selectedIndex={this.props.selectedSorterIndex}>
+            <BottomNavigation selectedIndex={selectedSorterIndex}>
                 <BottomNavigationItem 
                     label="By Date"
                     icon={alarmIcon}
-                    onClick={() => this.props.onSortingTypeClick(0)}/>
+                    onClick={() => onSortingTypeClick(0)}/>
                 <BottomNavigationItem 
                     label="By Priority"
                     icon={priorityIcon}
-                    onClick={() => this.props.onSortingTypeClick(1)}/>
+                    onClick={() => onSortingTypeClick(1)}/>
             </BottomNavigation>
         );
     }
 }
 
-export default FooterSortingOptions;
+FooterSortingOptions.propTypes = {
+    selectedSorterIndex: PropTypes.number.isRequired,
+    onSortingTypeClick: PropTypes.func.isRequired        
+};

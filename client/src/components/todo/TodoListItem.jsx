@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconMenu from 'material-ui/IconMenu';
@@ -9,10 +10,22 @@ import { grey400 } from 'material-ui/styles/colors';
 import { formatDateAsString, getPriorityStringById } from './TodoUtils';
 import { TodoItemStatus } from '../../reducers/actions';
 
-class TodoListItem extends Component {
+export default class TodoListItem extends Component {
     render() {
-        const formattedDueDate = formatDateAsString(this.props.dueDate);
-        const formattedPriority = getPriorityStringById(this.props.priority);
+        const {
+            id,
+            title,
+            dueDate,
+            priority,
+            status,
+            onEditTodoItemClick,
+            onDeleteTodoItemClick,
+            onToggleStatusButtonClick
+        } = this.props;
+        const todoItem = this.props;
+
+        const formattedDueDate = formatDateAsString(dueDate);
+        const formattedPriority = getPriorityStringById(priority);
         const secondaryText = `Due date: ${formattedDueDate}. Priority: ${formattedPriority}`;
         const iconButtonElement = (
             <IconButton
@@ -24,20 +37,20 @@ class TodoListItem extends Component {
 
         const rightIconMenu = (
             <IconMenu iconButtonElement={iconButtonElement}>
-                <MenuItem onClick={() => this.props.onEditTodoItemClick(this.props)}>Edit</MenuItem>
-                <MenuItem onClick={() => this.props.onDeleteTodoItemClick(this.props.id)}>Delete</MenuItem>
+                <MenuItem onClick={() => onEditTodoItemClick(todoItem)}>Edit</MenuItem>
+                <MenuItem onClick={() => onDeleteTodoItemClick(id)}>Delete</MenuItem>
             </IconMenu>
         );
 
         const statusCheckbox = (
             <Checkbox 
-                onCheck={() => this.props.onToggleStatusButtonClick(this.props.id)}
-                checked={this.props.status === TodoItemStatus.Completed}/>
+                onCheck={() => onToggleStatusButtonClick(todoItem)}
+                checked={status === TodoItemStatus.Completed}/>
         );
 
         return (
             <ListItem 
-                primaryText={this.props.title}
+                primaryText={title}
                 secondaryText={secondaryText}
                 leftCheckbox={statusCheckbox}
                 rightIconButton={rightIconMenu}>
@@ -46,4 +59,13 @@ class TodoListItem extends Component {
     }
 }
 
-export default TodoListItem;
+TodoListItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    dueDate: PropTypes.instanceOf(Date),
+    priority: PropTypes.number,
+    status: PropTypes.number,
+    onEditTodoItemClick: PropTypes.func,
+    onDeleteTodoItemClick: PropTypes.func,
+    onToggleStatusButtonClick: PropTypes.func
+};

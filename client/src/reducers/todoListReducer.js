@@ -1,4 +1,5 @@
-import { 
+import {
+    LOAD_TODO_ITEMS,
     ADD_TODO_ITEM,
     UPDATE_TODO_ITEM,
     DELETE_TODO_ITEM,
@@ -9,6 +10,9 @@ import {
 
 export default function todoListReducer(state = [], action) {
     switch (action.type) {
+        case LOAD_TODO_ITEMS:
+            return action.items;
+
         case ADD_TODO_ITEM:
             return [
                 ...state,
@@ -28,10 +32,8 @@ export default function todoListReducer(state = [], action) {
         
         case TOGGLE_ITEM_STATUS:
             return state.map(todo => {
-                if (todo.id === action.itemId) {
-                    return Object.assign({}, todo, {
-                        status: todo.status === TodoItemStatus.Active ? TodoItemStatus.Completed : TodoItemStatus.Active
-                    })
+                if (todo.id === action.item.id) {
+                    return action.item;
                 }
                 return todo;
             });

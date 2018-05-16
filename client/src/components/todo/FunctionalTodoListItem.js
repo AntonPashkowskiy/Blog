@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dueDate: todoItem.dueDate
         })),
         onDeleteTodoItemClick: id => dispatch(deleteTodoItemAction(id)),
-        onToggleStatusButtonClick: id => dispatch(toggleItemStatusAction(id))
+        onToggleStatusButtonClick: todoItem => dispatch(toggleItemStatusAction(todoItem))
     };
 }
 

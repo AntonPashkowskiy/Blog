@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -12,6 +13,9 @@ import './Header.less';
 
 class Header extends Component {
     render() {
+        const { onAddTodoItemClick, onVisibilityFilterClick, history } = this.props;
+        const { showAllChecked, showActiveChecked, showCompletedChecked } = this.props;
+        
         const addNewTodoIcon = <FontIcon className="material-icons">add</FontIcon>;
         const iconButton = (
             <IconButton>
@@ -25,31 +29,40 @@ class Header extends Component {
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
                 <MenuItem primaryText="Add item"
                           leftIcon={addNewTodoIcon}
-                          onClick={() => this.props.onAddTodoItemClick()}/>
+                          onClick={() => onAddTodoItemClick()}/>
                 <Divider/>
                 <MenuItem primaryText="Show all" 
-                          checked={this.props.showAllChecked}  
-                          onClick={() => this.props.onVisibilityFilterClick(VisibilityFilterType.ShowAll)}/>
+                          checked={showAllChecked}  
+                          onClick={() => onVisibilityFilterClick(VisibilityFilterType.ShowAll)}/>
 
                 <MenuItem primaryText="Show active"
-                          checked={this.props.showActiveChecked}
-                          onClick={() => this.props.onVisibilityFilterClick(VisibilityFilterType.ShowActive)}/>
+                          checked={showActiveChecked}
+                          onClick={() => onVisibilityFilterClick(VisibilityFilterType.ShowActive)}/>
 
                 <MenuItem primaryText="Show completed"
-                          checked={this.props.showCompletedChecked}
-                          onClick={() => this.props.onVisibilityFilterClick(VisibilityFilterType.ShowCompleted)}/>
+                          checked={showCompletedChecked}
+                          onClick={() => onVisibilityFilterClick(VisibilityFilterType.ShowCompleted)}/>
                 <Divider/>
-                <MenuItem primaryText="About" onClick={() => this.props.history.push("/about")}/>
+                <MenuItem primaryText="About" onClick={() => history.push("/about")}/>
             </IconMenu>
         );
         return (
             <AppBar
-                onLeftIconButtonClick={() => this.props.history.push("/")} 
+                onLeftIconButtonClick={() => history.push("/")} 
                 title="Just do it"
                 iconElementRight={headerMenu}>
             </AppBar>
         );
     }
 }
+
+Header.propTypes = {
+    showAllChecked: PropTypes.bool,
+    showActiveChecked: PropTypes.bool,
+    showCompletedChecked: PropTypes.bool,
+    onAddTodoItemClick: PropTypes.func,
+    onVisibilityFilterClick: PropTypes.func,
+    history: PropTypes.object
+};
 
 export default withRouter(Header);

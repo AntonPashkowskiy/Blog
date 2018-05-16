@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import FunctionalTodoListItem from './FunctionalTodoListItem';
 import { List } from 'material-ui/List';
 
-class TodoList extends Component {
+export default class TodoList extends Component {
+    componentDidMount() {
+        this.props.onListLoaded();
+    }
+
     render() {
-        if (this.props.todoList.length) {
+        const { todoList } = this.props;
+
+        if (todoList.length) {
             return (
                 <List>
-                    {this.props.todoList.map(todo => (
+                    {todoList.map(todo => (
                         <FunctionalTodoListItem key={todo.id} {...todo}/>
                     ))}
                 </List>
             );
         }
-        return <div></div>
+        return <div></div>;
     }
 }
 
-export default TodoList;
+TodoList.propTypes = {
+    onListLoaded: PropTypes.func.isRequired,
+    todoList: PropTypes.array.isRequired
+};

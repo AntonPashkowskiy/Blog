@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
@@ -6,7 +7,7 @@ import DatePicker from 'material-ui/DatePicker';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-class TodoDialog extends Component {
+export default class TodoDialog extends Component {
     constructor(props) {
         super(props);
 
@@ -48,25 +49,28 @@ class TodoDialog extends Component {
     };
 
     render() {
+        const { onCancelDialog, onConfirmDialog } = this.props;
+        const { confirmButtonText, dialogTitle, isDialogOpen, priorityItems } = this.props;
+
         const nowDate = new Date(Date.now());
         const actions = [
             <FlatButton 
                 label="Cancel"
                 primary={true}
-                onClick={this.props.onCancelDialog}/>,
+                onClick={onCancelDialog}/>,
             <FlatButton
-                label={this.props.confirmButtonText}
+                label={confirmButtonText}
                 primary={true}
                 keyboardFocused={true}
-                onClick={() => this.props.onConfirmDialog(this.state)}/>
+                onClick={() => onConfirmDialog(this.state)}/>
         ];
 
         return (
             <Dialog
-                title={this.props.dialogTitle}
+                title={dialogTitle}
                 actions={actions}
                 modal={true}
-                open={this.props.isDialogOpen}>
+                open={isDialogOpen}>
                 <TextField
                     hintText="Title" 
                     value={this.state.title} 
@@ -81,11 +85,26 @@ class TodoDialog extends Component {
                     onChange={this.handleDueDateChange}/>
 
                 <DropDownMenu value={this.state.priority} onChange={this.handlePriorityChange}>
-                    {this.props.priorityItems.map(item => <MenuItem key={item.value} value={item.value} primaryText={item.text}/>)}
+                    {priorityItems.map(item => <MenuItem key={item.value} value={item.value} primaryText={item.text}/>)}
                 </DropDownMenu>
             </Dialog>
         )
     }
 }
 
-export default TodoDialog;
+TodoDialog.propTypes = {
+    id: PropTypes.string,
+    title: PropTypes.string,
+    dueDate: PropTypes.instanceOf(Date),
+    priority: PropTypes.number,
+    status: PropTypes.number,
+    confirmButtonText: PropTypes.string.isRequired,
+    dialogTitle: PropTypes.string.isRequired,
+    isDialogOpen: PropTypes.bool.isRequired,
+    priorityItems: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        text: PropTypes.string
+    })),
+    onCancelDialog: PropTypes.func,
+    onConfirmDialog: PropTypes.func
+};

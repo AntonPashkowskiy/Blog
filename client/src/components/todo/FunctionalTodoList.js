@@ -1,6 +1,11 @@
 import TodoList from './TodoList.jsx';
 import { connect } from 'react-redux';
-import { SortingType, VisibilityFilterType, TodoItemStatus } from '../../reducers/actions';
+import {
+    SortingType,
+    VisibilityFilterType,
+    TodoItemStatus,
+    loadTodoItemsAction
+} from '../../reducers/actions';
 
 const filterTodoItems = (todoItems, visibilityFilterType) => {
     return todoItems.filter(todo => {
@@ -51,6 +56,12 @@ const mapStateToProps = (state, ownProps) => {
     };
 }
 
-const FunctionalTodoList = connect(mapStateToProps, null)(TodoList);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onListLoaded: () => dispatch(loadTodoItemsAction()) 
+    };
+}
+
+const FunctionalTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
 
 export default FunctionalTodoList;

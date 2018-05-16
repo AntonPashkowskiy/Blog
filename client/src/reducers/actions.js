@@ -1,3 +1,7 @@
+import thunk from 'redux-thunk';
+import api from '../api';
+import { toggleTodoItemStatus } from '../helpers/todoItemHelper';
+
 /* 
     Change sorting type
 */
@@ -36,6 +40,7 @@ export function changeVisibilityFilterAction(visibilityFilterType) {
 /*
     Todo list
 */
+export const LOAD_TODO_ITEMS = "LOAD_TODO_ITEMS";
 export const ADD_TODO_ITEM = "ADD_TODO_ITEM";
 export const UPDATE_TODO_ITEM = "UPDATE_TODO_ITEM";
 export const DELETE_TODO_ITEM = "DELETE_TODO_ITEM";
@@ -52,31 +57,47 @@ export const TodoItemStatus = {
     Completed: 2
 };
 
+export function loadTodoItemsAction() {
+    return dispatch => api.getAllTodoItems()
+        .then(data => dispatch({
+            type: LOAD_TODO_ITEMS,
+            items: data
+        }));
+}
+
 export function addTodoItemAction(todoItem) {
-    return {
-        type: ADD_TODO_ITEM,
-        item: todoItem
-    };
+    return dispatch => api.saveTodoItem(todoItem)
+        .then(data => dispatch({
+            type: ADD_TODO_ITEM,
+            item: data
+        }));
 }
 
 export function updateTodoItemAction(todoItem) {
-    return {
-        type: UPDATE_TODO_ITEM,
-        item: todoItem
-    };
+    return dispatch => api.updateTodoItem(todoItem)
+        .then(success => dispatch({
+            type: UPDATE_TODO_ITEM,
+            item: todoItem
+        }));
 }
 
 export function deleteTodoItemAction(id) {
-    return {
-        type: DELETE_TODO_ITEM,
-        itemId: id
-    };
+    return dispatch => api.deleteTodoItem(id)
+        .then(success => dispatch({
+            type: DELETE_TODO_ITEM,
+            itemId: id
+        }));
 }
 
-export function toggleItemStatusAction(id) {
-    return {
-        type: TOGGLE_ITEM_STATUS,
-        itemId: id
+export function toggleItemStatusAction(todoItem) {
+    return dispatch => {
+        const todoItemToUpdate = toggleTodoItemStatus(todoItem);
+
+        api.updateTodoItem(todoItemToUpdate)
+            .then(success => dispatch({
+                type: TOGGLE_ITEM_STATUS,
+                item: todoItemToUpdate
+            }));
     };
 }
 
