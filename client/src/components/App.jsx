@@ -8,10 +8,9 @@ import EditTodoDialog from './dialog/EditTodoDialog';
 import About from './about/About.jsx';
 import { Switch, Route } from 'react-router-dom';
 
-import './App.less';
 import './Reset.less';
 
-class App extends Component {
+export default class App extends Component {
     render() {
         return (
             <MuiThemeProvider>
@@ -29,5 +28,3 @@ class App extends Component {
         );
     }
 }
-
-export default App;

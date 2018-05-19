@@ -102,7 +102,7 @@ TodoDialog.propTypes = {
     dialogTitle: PropTypes.string.isRequired,
     isDialogOpen: PropTypes.bool.isRequired,
     priorityItems: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.string,
+        value: PropTypes.number,
         text: PropTypes.string
     })),
     onCancelDialog: PropTypes.func,

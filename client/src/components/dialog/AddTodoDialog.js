@@ -24,28 +24,19 @@ const mapStateToProps = (state, ownProps) => {
     };
 }
 
-// Temp function
-const getId = (min, max) => {
-    return Math.random() * (max - min) + min;
-}
-
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onCancelDialog: () => {
             dispatch(closeAddTodoDialogAction());
         },
         onConfirmDialog: newTodoItem => {
-            newTodoItem.id = getId(1, 10000);
-            newTodoItem.status = TodoItemStatus.Active;
             dispatch(addTodoItemAction(newTodoItem));
             dispatch(closeAddTodoDialogAction());
         }
     };
 }
 
-const AddTodoDialog = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(TodoDialog);
-
-export default AddTodoDialog;

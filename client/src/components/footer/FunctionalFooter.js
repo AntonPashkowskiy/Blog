@@ -20,9 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 }
 
-const FunctionalFooter = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Footer);
-
-export default FunctionalFooter;

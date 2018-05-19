@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
-class About extends Component {
+export default class About extends Component {
     render() {
         return (
             <Card>
@@ -13,5 +13,3 @@ class About extends Component {
         );
     }
 }
-
-export default About;

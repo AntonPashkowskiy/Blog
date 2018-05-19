@@ -21,9 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 }
 
-const FunctionalHeader = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Header);
-
-export default FunctionalHeader;

@@ -39,9 +39,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 }
 
-const EditTodoDialog = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(TodoDialog);
-
-export default EditTodoDialog;

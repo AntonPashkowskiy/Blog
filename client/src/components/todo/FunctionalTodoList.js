@@ -62,6 +62,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 }
 
-const FunctionalTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
-
-export default FunctionalTodoList;
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

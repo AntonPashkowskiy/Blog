@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { grey400 } from 'material-ui/styles/colors';
-import { formatDateAsString, getPriorityStringById } from './TodoUtils';
+import { formatDateAsString, getPriorityStringById } from './todoRenderingHelper';
 import { TodoItemStatus } from '../../reducers/actions';
 
 export default class TodoListItem extends Component {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import FooterSortingOptions from './FooterSortingOptions.jsx';
-import './Footer.less';
 
-class Footer extends Component {
+export default class Footer extends Component {
     render() {
         return (
             <Paper zDepth={1}>
@@ -12,5 +11,3 @@ class Footer extends Component {
         );
     }
 }
-
-export default Footer;

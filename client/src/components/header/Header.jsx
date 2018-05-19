@@ -9,7 +9,6 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import FontIcon from 'material-ui/FontIcon';
 import { withRouter } from "react-router-dom";
 import { VisibilityFilterType } from '../../reducers/actions';
-import './Header.less';
 
 class Header extends Component {
     render() {
