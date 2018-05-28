@@ -9,13 +9,7 @@ import {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onEditTodoItemClick: todoItem => dispatch(openEditTodoDialogAction({
-            id: todoItem.id,
-            title: todoItem.title,
-            status: todoItem.status,
-            priority: todoItem.priority,
-            dueDate: todoItem.dueDate
-        })),
+        onEditTodoItemClick: id => dispatch(openEditTodoDialogAction(id)),
         onDeleteTodoItemClick: id => dispatch(deleteTodoItemAction(id)),
         onToggleStatusButtonClick: todoItem => dispatch(toggleItemStatusAction(todoItem))
     };

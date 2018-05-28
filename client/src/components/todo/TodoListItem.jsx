@@ -22,10 +22,9 @@ export default class TodoListItem extends Component {
     }
 
     onEdit() {
-        const { onEditTodoItemClick } = this.props;
-        const todoItem = this.props;
+        const { id, onEditTodoItemClick } = this.props;
 
-        onEditTodoItemClick(todoItem);
+        onEditTodoItemClick(id);
     }
 
     onDelete() {

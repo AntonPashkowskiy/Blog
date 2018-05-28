@@ -20,27 +20,35 @@ export default class TodoDialog extends Component {
             status: this.props.status
         };
 
-        this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleDueDateChange = this.handleDueDateChange.bind(this);
-        this.handlePriorityChange = this.handlePriorityChange.bind(this);
+        this.onTitleChange = this.onTitleChange.bind(this);
+        this.onDueDateChange = this.onDueDateChange.bind(this);
+        this.onPriorityChange = this.onPriorityChange.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
     }
 
-    handleTitleChange (event) {
+    onTitleChange (event) {
         this.setState({
             title: event.target.value
         });
     }
 
-    handleDueDateChange(event, dueDate) {
+    onDueDateChange(event, dueDate) {
         this.setState({
             dueDate: dueDate
         });
     }
 
-    handlePriorityChange(event, index, value) {
+    onPriorityChange(event, index, value) {
         this.setState({
             priority: value
         });
+    }
+
+    onConfirm() {
+        const { onConfirmDialog } = this.props;
+        const newTodoItem = this.state;
+
+        onConfirmDialog(newTodoItem);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -67,7 +75,7 @@ export default class TodoDialog extends Component {
                 label={confirmButtonText}
                 primary={true}
                 keyboardFocused={true}
-                onClick={() => onConfirmDialog(this.state)}/>
+                onClick={this.onConfirm}/>
         ];
 
         return (
@@ -79,7 +87,7 @@ export default class TodoDialog extends Component {
                 <TextField
                     hintText="Title"
                     value={this.state.title}
-                    onChange={this.handleTitleChange}
+                    onChange={this.onTitleChange}
                     fullWidth={true}/>
 
                 <DatePicker
@@ -87,9 +95,9 @@ export default class TodoDialog extends Component {
                     mode="landscape"
                     value={this.state.dueDate}
                     minDate={nowDate}
-                    onChange={this.handleDueDateChange}/>
+                    onChange={this.onDueDateChange}/>
 
-                <DropDownMenu value={this.state.priority} onChange={this.handlePriorityChange}>
+                <DropDownMenu value={this.state.priority} onChange={this.onPriorityChange}>
                     {priorityItems.map(item => <MenuItem key={item.value} value={item.value} primaryText={item.text}/>)}
                 </DropDownMenu>
             </Dialog>

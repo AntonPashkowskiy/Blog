@@ -8,7 +8,7 @@ import {
 } from "../../reducers/actions";
 
 const mapStateToProps = (state, ownProps) => {
-    const itemToEdit = state.editDialog.itemToEdit || {};
+    const itemToEdit = state.todoList.find(t => t.id === state.editDialog.itemToEditId) || {};
 
     return {
         dialogTitle: "Edit todo:",

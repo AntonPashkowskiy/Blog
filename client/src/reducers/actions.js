@@ -125,10 +125,10 @@ export function closeAddTodoDialogAction() {
 export const OPEN_EDIT_TODO_DIALOG = "OPEN_EDIT_TODO_DIALOG";
 export const CLOSE_EDIT_TODO_DIALOG = "CLOSE_EDIT_TODO_DIALOG";
 
-export function openEditTodoDialogAction(todoItemToEdit) {
+export function openEditTodoDialogAction(todoItemId) {
     return {
         type: OPEN_EDIT_TODO_DIALOG,
-        itemToEdit: todoItemToEdit
+        itemToEditId: todoItemId
     };
 }
 

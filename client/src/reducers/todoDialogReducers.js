@@ -21,13 +21,13 @@ export function editTodoDialogReducer(state, action) {
         case OPEN_EDIT_TODO_DIALOG:
             return {
                 isEditTodoDialogOpen: true,
-                itemToEdit: action.itemToEdit
+                itemToEditId: action.itemToEditId
             };
         case CLOSE_EDIT_TODO_DIALOG:
         default:
             return {
                 isEditTodoDialogOpen: false,
-                itemToEdit: null
+                itemToEditId: null
             };
     }
 }
