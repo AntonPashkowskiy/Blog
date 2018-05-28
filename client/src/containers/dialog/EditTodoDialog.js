@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import TodoDialog from '../../components/dialog/TodoDialog.jsx';
-import { 
+import TodoDialog from "../../components/dialog/TodoDialog.jsx";
+import {
     closeEditTodoDialogAction,
     updateTodoItemAction,
-    TodoItemPriority 
-} from '../../reducers/actions';
+    TodoItemPriority
+} from "../../reducers/actions";
 
 const mapStateToProps = (state, ownProps) => {
     const itemToEdit = state.editDialog.itemToEdit || {};
@@ -26,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
         priority: itemToEdit.priority,
         status: itemToEdit.status
     };
-}
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(closeEditTodoDialogAction());
         }
     };
-}
+};
 
 export default connect(
     mapStateToProps,

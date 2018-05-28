@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import TodoDialog from '../../components/dialog/TodoDialog.jsx';
+import TodoDialog from "../../components/dialog/TodoDialog.jsx";
 import {
     closeAddTodoDialogAction,
     addTodoItemAction,
     TodoItemPriority,
-    TodoItemStatus 
-} from '../../reducers/actions';
+    TodoItemStatus
+} from "../../reducers/actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -23,7 +23,7 @@ const mapStateToProps = (state, ownProps) => {
         dueDate: null,
         priority: TodoItemPriority.Low
     };
-}
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(closeAddTodoDialogAction());
         }
     };
-}
+};
 
 export default connect(
     mapStateToProps,

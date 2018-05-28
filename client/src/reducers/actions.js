@@ -1,8 +1,8 @@
-import thunk from 'redux-thunk';
-import api from '../api';
-import { toggleTodoItemStatus } from '../helpers/todoItemHelper';
+import thunk from "redux-thunk";
+import api from "../api";
+import { toggleTodoItemStatus } from "../helpers/todoItemHelper";
 
-/* 
+/*
     Change sorting type
 */
 export const CHANGE_SORTING_TYPE = "CHANGE_SORTING_TYPE";

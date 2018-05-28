@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { TodoItemStatus } from '../reducers/actions';
+import axios from "axios";
+import { TodoItemStatus } from "../reducers/actions";
 
 const API = "/api/todos/";
 
@@ -42,7 +42,7 @@ const fakeSaveTodoItem = todoItem => {
         const id = Math.random() * (max - min) + min;
         return id.toString();
     };
-    
+
     return new Promise((resolve, reject) => {
         todoItem.id = getId(1, 10000);
         todoItem.status = TodoItemStatus.Active;

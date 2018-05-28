@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import { ListItem } from 'material-ui/List';
-import Checkbox from 'material-ui/Checkbox';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import { grey400 } from 'material-ui/styles/colors';
+import { ListItem } from "material-ui/List";
+import Checkbox from "material-ui/Checkbox";
+import IconMenu from "material-ui/IconMenu";
+import MenuItem from "material-ui/MenuItem";
+import IconButton from "material-ui/IconButton";
+import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
+import { grey400 } from "material-ui/styles/colors";
 
-import { formatDateAsString, getPriorityStringById } from './todoRenderingHelper';
-import { TodoItemStatus } from '../../reducers/actions';
+import { formatDateAsString, getPriorityStringById } from "./todoRenderingHelper";
+import { TodoItemStatus } from "../../reducers/actions";
 
 export default class TodoListItem extends Component {
     constructor(props) {
@@ -30,7 +30,7 @@ export default class TodoListItem extends Component {
 
     onDelete() {
         const { id, onDeleteTodoItemClick } = this.props;
-        
+
         onDeleteTodoItemClick(id);
     }
 
@@ -69,13 +69,13 @@ export default class TodoListItem extends Component {
         );
 
         const statusCheckbox = (
-            <Checkbox 
+            <Checkbox
                 onCheck={this.onToggleStatus}
                 checked={status === TodoItemStatus.Completed}/>
         );
 
         return (
-            <ListItem 
+            <ListItem
                 primaryText={title}
                 secondaryText={secondaryText}
                 leftCheckbox={statusCheckbox}

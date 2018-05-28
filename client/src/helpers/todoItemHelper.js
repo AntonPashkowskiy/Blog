@@ -1,4 +1,4 @@
-import { TodoItemStatus } from '../reducers/actions';
+import { TodoItemStatus } from "../reducers/actions";
 
 export const toggleTodoItemStatus = todoItem => {
     return Object.assign({}, todoItem, {

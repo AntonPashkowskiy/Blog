@@ -3,7 +3,7 @@ import {
     CLOSE_ADD_TODO_DIALOG,
     OPEN_EDIT_TODO_DIALOG,
     CLOSE_EDIT_TODO_DIALOG
-} from './actions';
+} from "./actions";
 
 export function addTodoDialogReducer(state = false, action) {
     switch (action.type) {

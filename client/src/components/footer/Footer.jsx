@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Paper from 'material-ui/Paper';
-import FontIcon from 'material-ui/FontIcon';
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
+import Paper from "material-ui/Paper";
+import FontIcon from "material-ui/FontIcon";
+import { BottomNavigation, BottomNavigationItem } from "material-ui/BottomNavigation";
 
 export default class Footer extends Component {
     render() {
@@ -14,11 +14,11 @@ export default class Footer extends Component {
         return (
             <Paper zDepth={1}>
                 <BottomNavigation selectedIndex={selectedSorterIndex}>
-                    <BottomNavigationItem 
+                    <BottomNavigationItem
                         label="By Date"
                         icon={alarmIcon}
                         onClick={onByDateClick}/>
-                    <BottomNavigationItem 
+                    <BottomNavigationItem
                         label="By Priority"
                         icon={priorityIcon}
                         onClick={onByPriorityClick}/>
@@ -31,5 +31,5 @@ export default class Footer extends Component {
 Footer.propTypes = {
     selectedSorterIndex: PropTypes.number.isRequired,
     onByDateClick: PropTypes.func.isRequired,
-    onByPriorityClick: PropTypes.func.isRequired        
+    onByPriorityClick: PropTypes.func.isRequired
 };

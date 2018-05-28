@@ -5,8 +5,8 @@ import {
     DELETE_TODO_ITEM,
     TOGGLE_ITEM_STATUS,
     TodoItemPriority,
-    TodoItemStatus 
-} from './actions'
+    TodoItemStatus
+} from "./actions";
 
 export default function todoListReducer(state = [], action) {
     switch (action.type) {
@@ -26,10 +26,10 @@ export default function todoListReducer(state = [], action) {
                 }
                 return todo;
             });
-        
+
         case DELETE_TODO_ITEM:
             return state.filter(todo => todo.id !== action.itemId);
-        
+
         case TOGGLE_ITEM_STATUS:
             return state.map(todo => {
                 if (todo.id === action.item.id) {

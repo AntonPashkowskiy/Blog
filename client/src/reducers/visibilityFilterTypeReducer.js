@@ -1,4 +1,4 @@
-import { CHANGE_VISIBILITY_FILTER, VisibilityFilterType } from './actions';
+import { CHANGE_VISIBILITY_FILTER, VisibilityFilterType } from "./actions";
 
 export default function visibilityFilterTypeReducer(state = VisibilityFilterType.ShowAll, action) {
     switch (action.type) {

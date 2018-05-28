@@ -1,4 +1,4 @@
-import { CHANGE_SORTING_TYPE, SortingType } from './actions';
+import { CHANGE_SORTING_TYPE, SortingType } from "./actions";
 
 export default function sortingTypeReducer(state = SortingType.ByDate, action) {
     switch (action.type) {

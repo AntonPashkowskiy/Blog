@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import Header from '../../components/header/Header.jsx';
+import Header from "../../components/header/Header.jsx";
 import {
     VisibilityFilterType,
     changeVisibilityFilterAction,
     openAddTodoDialogAction
-} from '../../reducers/actions';
+} from "../../reducers/actions";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
         showActiveChecked: state.visibilityFilterType === VisibilityFilterType.ShowActive,
         showCompletedChecked: state.visibilityFilterType === VisibilityFilterType.ShowCompleted
     };
-}
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onShowCompleted: () => dispatch(changeVisibilityFilterAction(VisibilityFilterType.ShowCompleted)),
         onAddTodoItemClick: () => dispatch(openAddTodoDialogAction())
     };
-}
+};
 
 export default connect(
     mapStateToProps,

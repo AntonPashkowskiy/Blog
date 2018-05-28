@@ -1,11 +1,11 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import TodoListItem from '../../components/todo/TodoListItem.jsx';
+import TodoListItem from "../../components/todo/TodoListItem.jsx";
 import {
     deleteTodoItemAction,
     toggleItemStatusAction,
     openEditTodoDialogAction
-} from '../../reducers/actions';
+} from "../../reducers/actions";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         onDeleteTodoItemClick: id => dispatch(deleteTodoItemAction(id)),
         onToggleStatusButtonClick: todoItem => dispatch(toggleItemStatusAction(todoItem))
     };
-}
+};
 
 export default connect(
     null,

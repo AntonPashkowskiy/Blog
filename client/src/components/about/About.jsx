@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
+import React, { Component } from "react";
+import { Card, CardTitle, CardText } from "material-ui/Card";
 
 export default class About extends Component {
     render() {

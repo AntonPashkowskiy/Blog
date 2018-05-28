@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
+import Dialog from "material-ui/Dialog";
+import FlatButton from "material-ui/FlatButton";
+import TextField from "material-ui/TextField";
+import DatePicker from "material-ui/DatePicker";
+import DropDownMenu from "material-ui/DropDownMenu";
+import MenuItem from "material-ui/MenuItem";
 
 export default class TodoDialog extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ export default class TodoDialog extends Component {
             title: this.props.title,
             dueDate: this.props.dueDate,
             priority: this.props.priority,
-            status: this.props.status 
+            status: this.props.status
         };
 
         this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -49,9 +49,9 @@ export default class TodoDialog extends Component {
             title: nextProps.title,
             dueDate: nextProps.dueDate,
             priority: nextProps.priority,
-            status: nextProps.status 
+            status: nextProps.status
         });
-    };
+    }
 
     render() {
         const { onCancelDialog, onConfirmDialog } = this.props;
@@ -59,7 +59,7 @@ export default class TodoDialog extends Component {
 
         const nowDate = new Date(Date.now());
         const actions = [
-            <FlatButton 
+            <FlatButton
                 label="Cancel"
                 primary={true}
                 onClick={onCancelDialog}/>,
@@ -77,12 +77,12 @@ export default class TodoDialog extends Component {
                 modal={true}
                 open={isDialogOpen}>
                 <TextField
-                    hintText="Title" 
-                    value={this.state.title} 
+                    hintText="Title"
+                    value={this.state.title}
                     onChange={this.handleTitleChange}
                     fullWidth={true}/>
 
-                <DatePicker 
+                <DatePicker
                     hintText="Due date"
                     mode="landscape"
                     value={this.state.dueDate}
@@ -93,7 +93,7 @@ export default class TodoDialog extends Component {
                     {priorityItems.map(item => <MenuItem key={item.value} value={item.value} primaryText={item.text}/>)}
                 </DropDownMenu>
             </Dialog>
-        )
+        );
     }
 }
 
