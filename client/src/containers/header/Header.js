@@ -1,5 +1,6 @@
-import Header from './Header.jsx';
 import { connect } from 'react-redux';
+
+import Header from '../../components/header/Header.jsx';
 import {
     VisibilityFilterType,
     changeVisibilityFilterAction,
@@ -16,7 +17,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onVisibilityFilterClick: filterType => dispatch(changeVisibilityFilterAction(filterType)),
+        onShowAll: () => dispatch(changeVisibilityFilterAction(VisibilityFilterType.ShowAll)),
+        onShowActive: () => dispatch(changeVisibilityFilterAction(VisibilityFilterType.ShowActive)),
+        onShowCompleted: () => dispatch(changeVisibilityFilterAction(VisibilityFilterType.ShowCompleted)),
         onAddTodoItemClick: () => dispatch(openAddTodoDialogAction())
     };
 }

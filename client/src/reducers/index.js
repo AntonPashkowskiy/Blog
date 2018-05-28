@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import sortingTypeReducer from './sortingTypeReducer';
 import visibilityFilterTypeReducer from './visibilityFilterTypeReducer';
 import todoListReducer from './todoListReducer';

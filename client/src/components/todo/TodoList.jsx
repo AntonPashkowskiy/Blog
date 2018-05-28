@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FunctionalTodoListItem from './FunctionalTodoListItem';
+
 import { List } from 'material-ui/List';
+
+import TodoListItem from '../../containers/todo/TodoListItem';
 
 export default class TodoList extends Component {
     componentDidMount() {
@@ -15,7 +17,7 @@ export default class TodoList extends Component {
             return (
                 <List>
                     {todoList.map(todo => (
-                        <FunctionalTodoListItem key={todo.id} {...todo}/>
+                        <TodoListItem key={todo.id} {...todo}/>
                     ))}
                 </List>
             );

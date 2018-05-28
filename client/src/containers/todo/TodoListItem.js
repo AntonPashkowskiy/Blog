@@ -1,5 +1,6 @@
-import TodoListItem from './TodoListItem.jsx';
 import { connect } from 'react-redux';
+
+import TodoListItem from '../../components/todo/TodoListItem.jsx';
 import {
     deleteTodoItemAction,
     toggleItemStatusAction,

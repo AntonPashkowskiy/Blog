@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { ListItem } from 'material-ui/List';
 import Checkbox from 'material-ui/Checkbox';
 import IconMenu from 'material-ui/IconMenu';
@@ -7,20 +8,45 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import { grey400 } from 'material-ui/styles/colors';
+
 import { formatDateAsString, getPriorityStringById } from './todoRenderingHelper';
 import { TodoItemStatus } from '../../reducers/actions';
 
 export default class TodoListItem extends Component {
+    constructor(props) {
+        super(props);
+
+        this.onEdit = this.onEdit.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+        this.onToggleStatus = this.onToggleStatus.bind(this);
+    }
+
+    onEdit() {
+        const { onEditTodoItemClick } = this.props;
+        const todoItem = this.props;
+
+        onEditTodoItemClick(todoItem);
+    }
+
+    onDelete() {
+        const { id, onDeleteTodoItemClick } = this.props;
+        
+        onDeleteTodoItemClick(id);
+    }
+
+    onToggleStatus() {
+        const { onToggleStatusButtonClick } = this.props;
+        const todoItem = this.props;
+
+        onToggleStatusButtonClick(todoItem);
+    }
+
     render() {
         const {
-            id,
             title,
             dueDate,
             priority,
-            status,
-            onEditTodoItemClick,
-            onDeleteTodoItemClick,
-            onToggleStatusButtonClick
+            status
         } = this.props;
         const todoItem = this.props;
 
@@ -37,14 +63,14 @@ export default class TodoListItem extends Component {
 
         const rightIconMenu = (
             <IconMenu iconButtonElement={iconButtonElement}>
-                <MenuItem onClick={() => onEditTodoItemClick(todoItem)}>Edit</MenuItem>
-                <MenuItem onClick={() => onDeleteTodoItemClick(id)}>Delete</MenuItem>
+                <MenuItem onClick={this.onEdit}>Edit</MenuItem>
+                <MenuItem onClick={this.onDelete}>Delete</MenuItem>
             </IconMenu>
         );
 
         const statusCheckbox = (
             <Checkbox 
-                onCheck={() => onToggleStatusButtonClick(todoItem)}
+                onCheck={this.onToggleStatus}
                 checked={status === TodoItemStatus.Completed}/>
         );
 

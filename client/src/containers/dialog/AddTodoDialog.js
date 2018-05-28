@@ -1,6 +1,7 @@
-import TodoDialog from './TodoDialog.jsx';
 import { connect } from 'react-redux';
-import { 
+
+import TodoDialog from '../../components/dialog/TodoDialog.jsx';
+import {
     closeAddTodoDialogAction,
     addTodoItemAction,
     TodoItemPriority,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
@@ -19,23 +20,27 @@ export default class TodoDialog extends Component {
             status: this.props.status 
         };
 
-        this.handleTitleChange = (event) => {
-            this.setState({
-                title: event.target.value
-            });
-        };
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleDueDateChange = this.handleDueDateChange.bind(this);
+        this.handlePriorityChange = this.handlePriorityChange.bind(this);
+    }
 
-        this.handleDueDateChange = (event, dueDate) => {
-            this.setState({
-                dueDate: dueDate
-            });
-        };
+    handleTitleChange (event) {
+        this.setState({
+            title: event.target.value
+        });
+    }
 
-        this.handlePriorityChange = (event, index, value) => {
-            this.setState({
-                priority: value
-            });
-        };
+    handleDueDateChange(event, dueDate) {
+        this.setState({
+            dueDate: dueDate
+        });
+    }
+
+    handlePriorityChange(event, index, value) {
+        this.setState({
+            priority: value
+        });
     }
 
     componentWillReceiveProps(nextProps) {

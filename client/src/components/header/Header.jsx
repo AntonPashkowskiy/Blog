@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from "react-router-dom";
+
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -7,12 +9,10 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import FontIcon from 'material-ui/FontIcon';
-import { withRouter } from "react-router-dom";
-import { VisibilityFilterType } from '../../reducers/actions';
 
 class Header extends Component {
     render() {
-        const { onAddTodoItemClick, onVisibilityFilterClick, history } = this.props;
+        const { onAddTodoItemClick, onShowAll, onShowActive, onShowCompleted, history } = this.props;
         const { showAllChecked, showActiveChecked, showCompletedChecked } = this.props;
         
         const addNewTodoIcon = <FontIcon className="material-icons">add</FontIcon>;
@@ -28,19 +28,19 @@ class Header extends Component {
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
                 <MenuItem primaryText="Add item"
                           leftIcon={addNewTodoIcon}
-                          onClick={() => onAddTodoItemClick()}/>
+                          onClick={onAddTodoItemClick}/>
                 <Divider/>
                 <MenuItem primaryText="Show all" 
                           checked={showAllChecked}  
-                          onClick={() => onVisibilityFilterClick(VisibilityFilterType.ShowAll)}/>
+                          onClick={onShowAll}/>
 
                 <MenuItem primaryText="Show active"
                           checked={showActiveChecked}
-                          onClick={() => onVisibilityFilterClick(VisibilityFilterType.ShowActive)}/>
+                          onClick={onShowActive}/>
 
                 <MenuItem primaryText="Show completed"
                           checked={showCompletedChecked}
-                          onClick={() => onVisibilityFilterClick(VisibilityFilterType.ShowCompleted)}/>
+                          onClick={onShowCompleted}/>
                 <Divider/>
                 <MenuItem primaryText="About" onClick={() => history.push("/about")}/>
             </IconMenu>
@@ -60,7 +60,9 @@ Header.propTypes = {
     showActiveChecked: PropTypes.bool,
     showCompletedChecked: PropTypes.bool,
     onAddTodoItemClick: PropTypes.func,
-    onVisibilityFilterClick: PropTypes.func,
+    onShowAll: PropTypes.func,
+    onShowActive: PropTypes.func,
+    onShowCompleted: PropTypes.func,
     history: PropTypes.object
 };
 
